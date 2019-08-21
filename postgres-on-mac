@@ -13,3 +13,13 @@ postgres=# \c anuj_demo
 psql (11.5, server 11.4)
 You are now connected to database "anuj_demo" as user "postgres".
 
+-- Basics --
+SQL commands can be broken into roughly three categories: DDL (Data Definition Language), DML (Data Manipulation Language), and DCL (Data Control Language).
+DDL is a set of commands used to define the overall structure or schema of how your data is going to be stored. In other words, you would use DDL to create a table, update the fields in an existing table, or any other operation where you are changing the structure of how you store data, but not actually changing the data itself.
+DML is a set of commands used to actually manipulate data stored in your database. This includes looking up records in your table, inserting new data into a table, deleting records, etc. This is where you will spend a large portion of your time when dealing with SQL, and can be further broken into roughly four main categories:
+
+Retrieving data
+Creating data
+Updating data
+Deleting data
+DCL is a set of commands used to dictate which users have permissions to do different things inside of your database. For example you might set up a user so that it has permission to read data in your database but it doesn’t have permission to create new records.

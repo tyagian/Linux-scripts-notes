@@ -1,0 +1,15 @@
+Easy way to install postgres on mac: http://postgresapp.com/
+
+## Note: To remove error: psql: FATAL: role “postgres” does not exist
+Use: /Applications/Postgres.app/Contents/Versions/11/bin/createuser -s postgres
+To enter postgres shell: psql -U postgres
+
+-- Create Database: --
+postgres=# CREATE DATABASE anuj_demo;
+CREATE DATABASE
+
+-- Connect to the database --
+postgres=# \c anuj_demo
+psql (11.5, server 11.4)
+You are now connected to database "anuj_demo" as user "postgres".
+

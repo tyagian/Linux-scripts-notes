@@ -401,3 +401,22 @@ Find all files which have been accessed within the last 30 days.
 Explain the following command (date ; ps -ef | awk '{print $1}' | sort | uniq | wc -l ) >> Activity.log
 Write a script to list all the differences between two directories.
 In a log file with contents as <TIME> : [MESSAGE] : [ERROR_NO] - Human readable text display summary/count of specific error numbers that occurred every hour or a specific hour.
+
+
+
+More Resources:
+
+https://blog.balthazar-rouberol.com/preparing-the-sre-interview
+
+Good Scaling blog: https://blog.hartleybrody.com/scale-load/
+Tshoot tips: https://blog.hartleybrody.com/debugging-code-beginner/
+Cgroups: Containers: cgroups, Linux kernel namespaces, ufs, Docker, and intro to Kubernetes pods
+
+Kernel Tutorials: https://learnlinuxconcepts.blogspot.com/2014/10/this-blog-is-to-help-those-students-and.html
+
+NETFLIX PERFORMANCE BLOG: https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+Netflix Breden Gregg, USE Method: http://www.brendangregg.com/usemethod.html
+
+System Interview questions: https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md
+
+Interesting blog: https://open.blogs.nytimes.com/2010/12/20/using-flat-files-so-elections-dont-break-your-server/?_r=0

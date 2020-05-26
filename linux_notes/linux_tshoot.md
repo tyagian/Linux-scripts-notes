@@ -94,6 +94,7 @@ Average:          all      2.02      0.00      0.27      0.01      0.00     97.7
 
 
 #Resources:
+```
 Useful tshoot cheatsheet: http://www.brendangregg.com/USEmethod/use-rosetta.html
 https://syedali.net/engineer-interview-questions/
 OS Book: https://0xax.gitbooks.io/linux-insides/content/Interrupts/linux-interrupts-1.html
@@ -114,3 +115,4 @@ https://jivoi.github.io/2016/01/22/linux-sysadm-devops-interview-questions/
 #Netflix Performance blog:
 https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
 http://www.brendangregg.com/usemethod.html
+```

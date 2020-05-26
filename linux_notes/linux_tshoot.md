@@ -93,23 +93,24 @@ Average:          all      2.02      0.00      0.27      0.01      0.00     97.7
 ```
 
 
-Resources:
+#Resources:
 Useful tshoot cheatsheet: http://www.brendangregg.com/USEmethod/use-rosetta.html
 https://syedali.net/engineer-interview-questions/
 OS Book: https://0xax.gitbooks.io/linux-insides/content/Interrupts/linux-interrupts-1.html
-
+         https://scoutapm.com/blog/understanding-page-faults-and-memory-swap-in-outs-when-should-you-worry
+         https://learnlinuxconcepts.blogspot.com/2014/02/paging-and-segmentation.html
+         
 Linux monitoring tools: https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
 Linux Server Hardening Security Tips: https://www.cyberciti.biz/tips/linux-security.html
 Nginx best practices: https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
 VM tuning: https://www.cyberciti.biz/faq/linux-kernel-tuning-virtual-memory-subsystem/
 set sysctl variables: https://www.cyberciti.biz/faq/howto-set-sysctl-variables/
 
-Questions:
+#Questions:
 https://github.com/chassing/linux-sysadmin-interview-questions
 Their answers:
 https://jivoi.github.io/2016/01/22/linux-sysadm-devops-interview-questions/
 
-
-Netflix Performance blog:
+#Netflix Performance blog:
 https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
 http://www.brendangregg.com/usemethod.html

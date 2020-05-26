@@ -101,6 +101,8 @@ OS Book: https://0xax.gitbooks.io/linux-insides/content/Interrupts/linux-interru
 Linux monitoring tools: https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
 Linux Server Hardening Security Tips: https://www.cyberciti.biz/tips/linux-security.html
 Nginx best practices: https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
+VM tuning: https://www.cyberciti.biz/faq/linux-kernel-tuning-virtual-memory-subsystem/
+set sysctl variables: https://www.cyberciti.biz/faq/howto-set-sysctl-variables/
 
 Questions:
 https://github.com/chassing/linux-sysadmin-interview-questions

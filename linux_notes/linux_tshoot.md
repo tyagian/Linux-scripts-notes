@@ -99,7 +99,8 @@ https://syedali.net/engineer-interview-questions/
 OS Book: https://0xax.gitbooks.io/linux-insides/content/Interrupts/linux-interrupts-1.html
 
 Linux monitoring tools: https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
-
+Linux Server Hardening Security Tips: https://www.cyberciti.biz/tips/linux-security.html
+Nginx best practices: https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
 
 Questions:
 https://github.com/chassing/linux-sysadmin-interview-questions

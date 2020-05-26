@@ -34,7 +34,7 @@ OR
 # pgrep lighttpd
 
 OR
-# pgrep -u vivek php-cgi
+# pgrep -u anuj php-cgi
 ```
 
 

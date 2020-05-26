@@ -1,5 +1,5 @@
-High inode usage:
-1. 
+1. High inode usage:
+ 
 ```
  $ df -i
 Filesystem      Inodes  IUsed   IFree IUse% Mounted on
@@ -63,12 +63,43 @@ Show Us Top 10 CPU Consuming Process
 ```
 # ps -auxf | sort -nr -k 3 | head -10
 ```
+7. iostat – Montor Linux average CPU load and disk activity
+```
+$iostat
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           3.50    0.09    0.51    0.03    0.00   95.86
+
+Device:            tps   Blk_read/s   Blk_wrtn/s   Blk_read   Blk_wrtn
+sda              22.04        31.88       512.03   16193351  260102868
+sda1              0.00         0.00         0.00       2166        180
+sda2             22.04        31.87       512.03   16189010  260102688
+sda3              0.00         0.00         0.00       1615          0
+```
+8. sar – Monitor, collect and report Linux system activity
+sar command used to collect, report, and save system activity information. To see network counter, enter:
+# sar -n DEV | more
+The network counters from the 24th:
+# sar -n DEV -f /var/log/sa/sa24 | more
+You can also display real time usage using sar:
+```
+# sar 4 5
+06:45:12 PM       CPU     %user     %nice   %system   %iowait    %steal     %idle
+06:45:16 PM       all      2.00      0.00      0.22      0.00      0.00     97.78
+06:45:20 PM       all      2.07      0.00      0.38      0.03      0.00     97.52
+06:45:24 PM       all      0.94      0.00      0.28      0.00      0.00     98.78
+06:45:28 PM       all      1.56      0.00      0.22      0.00      0.00     98.22
+06:45:32 PM       all      3.53      0.00      0.25      0.03      0.00     96.19
+Average:          all      2.02      0.00      0.27      0.01      0.00     97.70
+```
 
 
 Resources:
 Useful tshoot cheatsheet: http://www.brendangregg.com/USEmethod/use-rosetta.html
 https://syedali.net/engineer-interview-questions/
 OS Book: https://0xax.gitbooks.io/linux-insides/content/Interrupts/linux-interrupts-1.html
+
+Linux monitoring tools: https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
+
 
 Questions:
 https://github.com/chassing/linux-sysadmin-interview-questions

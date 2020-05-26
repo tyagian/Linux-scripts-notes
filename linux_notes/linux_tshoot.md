@@ -1,6 +1,18 @@
 High inode usage:
-1. df -i
-2. $du -s --inodes * | sort -rn
+1. 
+```
+ $ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+udev            320118    438  319680    1% /dev
+tmpfs           327888    823  327065    1% /run
+/dev/sda1      1671168 531079 1140089   32% /
+tmpfs           327888      8  327880    1% /dev/shm
+tmpfs           327888      5  327883    1% /run/lock
+tmpfs           327888     18  327870    1% /sys/fs/cgroup
+/dev/loop0       12852  12852       0  100% /snap/core/8935
+```
+```
+ $du -s --inodes * | sort -rn
 134669  proc
 53819   usr
 26186   sys
@@ -12,21 +24,22 @@ High inode usage:
 407     dev
 325     boot
 75      root
+```
 
 3. list of open files which are deleted
-lsof | grep delete
-
+```lsof | grep delete```
+4.
 Curl multiple hosts:
-4. Test HTTP status of a DS: while true; do sleep 1; curl -s -o /dev/null -w "%{http_code}\n"  <domain-name>; done
+ Test HTTP status of a DS: `while true; do sleep 1; curl -s -o /dev/null -w "%{http_code}\n"  <domain-name>; done`
 
 Curl to see headers: 
-5. curl -vs www.<domain-name>.com 2>&1 | sed '/^* /d; /bytes data]$/d; s/> //; s/< //'
+ `curl -vs www.<domain-name>.com 2>&1 | sed '/^* /d; /bytes data]$/d; s/> //; s/< //'`
 
 Curl test multiple hosts:
-6. for i in $(cat report.csv); do IP=$(echo ${i} |cut -d, -f2); HNAME=$(echo ${i} |cut -d, -f1); OUTPUT=$(curl -Ls -o /dev/null -w %{http_code}   https://<domain-name>.com/example.json --resolve <domain-name>.com:443:${IP} -6);echo "${HNAME} ${OUTPUT}"; done  
+ ```for i in $(cat report.csv); do IP=$(echo ${i} |cut -d, -f2); HNAME=$(echo ${i} |cut -d, -f1); OUTPUT=$(curl -Ls -o /dev/null -w %{http_code}   https://<domain-name>.com/example.json --resolve <domain-name>.com:443:${IP} -6);echo "${HNAME} ${OUTPUT}"; done  ```
 
 
-7. 
+5. 
 Try To Display Only The Process IDs of Lighttpd
 ```
 # ps -C lighttpd -o pid=

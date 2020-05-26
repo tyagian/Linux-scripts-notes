@@ -77,9 +77,9 @@ sda3              0.00         0.00         0.00       1615          0
 ```
 8. sar – Monitor, collect and report Linux system activity
 sar command used to collect, report, and save system activity information. To see network counter, enter:
-# sar -n DEV | more
+` sar -n DEV | more`
 The network counters from the 24th:
-# sar -n DEV -f /var/log/sa/sa24 | more
+` sar -n DEV -f /var/log/sa/sa24 | more`
 You can also display real time usage using sar:
 ```
 # sar 4 5

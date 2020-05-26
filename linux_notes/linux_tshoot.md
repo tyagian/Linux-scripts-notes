@@ -27,6 +27,29 @@ Curl test multiple hosts:
 
 
 7. 
+Try To Display Only The Process IDs of Lighttpd
+```
+# ps -C lighttpd -o pid=
+OR
+# pgrep lighttpd
+
+OR
+# pgrep -u vivek php-cgi
+```
+```
+Print The Name of PID 55977
+```
+# ps -p 55977 -o comm=
+```
+Top 10 Memory Consuming Process
+```
+# ps -auxf | sort -nr -k 4 | head -10
+```
+Show Us Top 10 CPU Consuming Process
+```
+# ps -auxf | sort -nr -k 3 | head -10
+```
+
 
 Resources:
 Useful tshoot cheatsheet: http://www.brendangregg.com/USEmethod/use-rosetta.html

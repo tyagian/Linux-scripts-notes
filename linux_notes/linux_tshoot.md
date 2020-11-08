@@ -92,6 +92,8 @@ You can also display real time usage using sar:
 Average:          all      2.02      0.00      0.27      0.01      0.00     97.70
 ```
 
+Check TTMS: 
+curl -w "%{time_total}\n" -o /dev/null -s www.test.com
 
 #Resources:
 ```

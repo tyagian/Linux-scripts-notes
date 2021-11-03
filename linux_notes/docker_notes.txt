@@ -1,0 +1,25 @@
+1. Basics: 
+   docker image
+   docker run --name fooname <image-name>
+   docker ps -a 
+   docker ps -a -l
+   docker image ls
+   docker image rmi -f hello-world
+   docker run -ti ubuntu bash
+   docker ps -a -l // to get ID
+   docker commit <container_ID>
+   docker tag <container_ID>
+   docker run -it my-image bash
+   docker run -it -d my-image bash // -d for detached mode
+   docker container ls
+   docker attach <container_ID>
+   docker container stop <container_ID>
+   
+   
+2.
+Docker port forwarding: persistent and ephemeral. 
+
+$ 
+
+$docker run --rm -d -u root -p 443:8443 -v /root/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean 
+--httpPort=-1 --httpsPort=8443 --httpsKeyStore=/var/jenkins_home/jenkins_keystore.jks --httpsKeyStorePassword='<your_password>'

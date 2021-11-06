@@ -1,3 +1,8 @@
+0. Port forwarding
+```
+ssh server_hostname1 -L localhost:9100
+```
+
 1. High inode usage:
  
 ```
